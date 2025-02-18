@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        <h1>Todo App</h1>
+    </header>
+    <section>
+        <div class="form-input">
+            <form action="{% url 'todo_home' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="result">
+            <h1>List Todos</h1>
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>What Todo</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in todos %}
+                        <tr>
+                            <td class="center">{{ forloop.counter }}</td>
+                            <td class="{% if todo.status %}finish-todo{% endif %}">
+                                <a href="">{{ todo.name }}</a>
+                            </td>
+                            <td class="center">
+                                <form action="{% url 'update_status' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="todo_id" value="{{ todo.id }}">
+                                    <input type="checkbox"
+                                           onchange="this.form.submit()"
+                                           name="status"
+                                           id="{{ forloop.counter0 }}"
+                                           value="{{ todo.status }}"
+                                           {% if todo.status %}checked{% endif %}>
+                                </form>
+                            </td>
+                            <td class="btn-group">
+                                <form class="form-delete" action="{% url 'delete_todo' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="delete_id" value="{{ todo.id }}">
+                                    <button class="btn-delete">Delete</button>
+                                </form>
+                                <a href="{% url 'edit_todo' todo.id %}"
+                                   class="{% if not todo.status %}btn-edit{% else %}btn-disable{% endif %}">Edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

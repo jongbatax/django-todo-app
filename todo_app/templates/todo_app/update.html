@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        <h1>Todo App | UPDATE</h1>
+    </header>
+    <section>
+        <div class="form-input">
+            <form action="{% url 'update_todo' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="todo_id" value="{{ todo.id }}">
+                {{ form.as_p }}
+                {% comment %} <input type="text" name="name_todo" id="todo" placeholder="Input Todos"> {% endcomment %}
+                <input type="submit" value="UPDATE">
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="back-button">
+            <a href="{% url 'todo_home' %}">BACK</a>
+        </div>
+    </section>
+{% endblock %}

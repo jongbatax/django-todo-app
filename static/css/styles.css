@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "roboto", sans-serif;
+}
+
+header,
+section,
+.form-input,
+.form-input form {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    text-transform: uppercase;
+    letter-spacing: 2;
+    color: #233;
+}
+
+.form-input,
+.back-button,
+.result {
+    margin-top: 20px;
+    min-width: 500px;
+    max-width: 500px;
+    height: 100px;
+}
+
+.form-input {
+    border: 1px solid #abc;
+}
+
+.form-input form input[type="text"] {
+    margin-right: 20px;
+    padding: 10px;
+    width: 250px;
+    border: none;
+    border-bottom: 1px solid #1890ff;
+    outline: none;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease;
+    text-indent: -100%;
+    opacity: 1;
+}
+
+.form-input input[type="submit"] {
+    padding: 10px 20px 10px 20px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+}
+
+.result h1 {
+    color: #233;
+    border-bottom: 2px solid #ccc;
+    text-align: right;
+}
+
+table {
+    border-spacing: 0;
+}
+
+table,
+tr,
+th,
+td {
+    border: none;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td a {
+    text-decoration: none;
+}
+
+th {
+    background-color: #233;
+    color: #fff;
+    padding: 5px;
+}
+
+td {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+.btn-group {
+    display: flex;
+    flex: 1;
+    align-content: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.form-delete {
+    display: flex;
+    flex: 1;
+    align-content: center;
+    margin-inline: 0;
+    max-width: 50px;
+}
+
+.btn-delete,
+.btn-edit, .btn-disable {
+    text-align: center;
+    width: 50px;
+    padding: 0;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-delete {
+    color: white;
+    background-color: red;
+}
+
+.btn-edit {
+    color: white;
+    background-color: green;
+}
+
+.btn-disable {
+    pointer-events: none;
+    text-decoration: line-through;
+    color: white;
+    background-color: #aaa;
+}
+
+.finish-todo {
+    text-decoration: line-through;
+}
+
+section .back-button a {
+    text-decoration: none;
+    background-color: red;
+    padding: 5px;
+    color: white;
+}
